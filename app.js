@@ -15,6 +15,7 @@ require("./config/passport")(passport);
 
 // load routes
 const index = require("./routes/index");
+const stories = require("./routes/stories");
 const auth = require("./routes/auth");
 
 // load keys
@@ -77,6 +78,7 @@ app.set("view engine", "handlebars");
 
 // use routes
 app.use("/", index);
+app.use("/stories", stories);
 app.use("/auth", auth);
 
 // server
