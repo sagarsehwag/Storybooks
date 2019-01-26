@@ -15,3 +15,11 @@ main {
 footer{
   margin-top:20px;
 }
+
+.story-text {
+  height: 100px;
+}
+
+#delete-form {
+  display: inline;
+}

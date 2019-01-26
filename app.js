@@ -2,6 +2,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -9,6 +10,7 @@ const passport = require("passport");
 
 // load User model
 require("./models/User");
+require("./models/Story");
 
 // load passport configuration
 require("./config/passport")(passport);
@@ -44,9 +46,13 @@ app.use(
 );
 app.use(express.json());
 
+// method-override middleware
+app.use(methodOverride("_method"));
+
 // serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
+// express session middleware
 app.use(cookieParser());
 app.use(
   session({
@@ -67,10 +73,24 @@ app.use((req, res, next) => {
   next();
 });
 
+// handlebars helper
+const {
+  truncate,
+  stripTags,
+  formatDate,
+  select
+} = require("./helpers/hbs")
+
 // handlebars middleware
 app.engine(
   "handlebars",
   exphbs({
+    helpers: {
+      truncate: truncate,
+      stripTags: stripTags,
+      formatDate: formatDate,
+      select: select
+    },
     defaultLayout: "main"
   })
 );
