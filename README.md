@@ -12,8 +12,6 @@ This app uses a Google OAuth 2.0 strategy for authentication. Users can login an
 
 ## Usage
 
-Make sure you have Redis installed and running
-
 Install Dependencies
 
 ```sh
@@ -27,4 +25,3 @@ $ npm start
 ```
 
 Visit http://localhost:5000
-
