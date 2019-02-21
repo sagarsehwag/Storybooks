@@ -8,7 +8,9 @@ This app uses a Google OAuth 2.0 strategy for authentication. Users can login an
 </kbd>
 
 ### Version
+```sh
 1.0.0
+```
 
 ## Usage
 
